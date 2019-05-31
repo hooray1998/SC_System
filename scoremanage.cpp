@@ -83,8 +83,6 @@ void scoremanage::on_score_addpushButton_clicked()
     QString score=ui->score_scorelineEdit->text();
 
 
-
-
     QSqlDatabase db;
     if(QSqlDatabase::contains("qt_sql_default_connection"))
     db = QSqlDatabase::database("qt_sql_default_connection");

@@ -29,19 +29,11 @@ SOURCES += main.cpp\
     manger.cpp \
     globle.cpp \
     allstuinform.cpp \
-    findscore.cpp \
-    moneyfind.cpp \
-    awardfind.cpp \
-    findclass.cpp \
-    coursefind.cpp \
     userlogin.cpp \
-    deletelogin.cpp \
     stuinformanage.cpp \
     seeallstuinfor.cpp \
-    dormmanage.cpp \
     scoremanage.cpp \
     coursemanage.cpp \
-    classmanage.cpp \
 
 HEADERS  += mainwindow.h \
     student.h \
@@ -49,36 +41,21 @@ HEADERS  += mainwindow.h \
     manger.h \
     globle.h \
     allstuinform.h \
-    findscore.h \
-    moneyfind.h \
-    awardfind.h \
-    findclass.h \
-    coursefind.h \
     userlogin.h \
-    deletelogin.h \
     stuinformanage.h \
     seeallstuinfor.h \
-    dormmanage.h \
     scoremanage.h \
     coursemanage.h \
-    classmanage.h \
 
 FORMS    += mainwindow.ui \
     studentform.ui \
     manger.ui \
     allstuinform.ui \
-    findscore.ui \
-    moneyfind.ui \
-    awardfind.ui \
-    findclass.ui \
-    coursefind.ui \
     userlogin.ui \
     stuinformanage.ui \
     seeallstuinfor.ui \
-    dormmanage.ui \
     scoremanage.ui \
     coursemanage.ui \
-    classmanage.ui \
 
 QT       += sql
 

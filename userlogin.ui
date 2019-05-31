@@ -20,7 +20,13 @@
       <widget class="QTableWidget" name="tableWidget"/>
      </item>
      <item>
-      <widget class="QPushButton" name="insertloginqueryButton">
+      <widget class="QPushButton" name="seeAllButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>80</height>
+        </size>
+       </property>
        <property name="text">
         <string>查看全部</string>
        </property>
@@ -42,7 +48,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="inster_IdlineEdit"/>
+          <widget class="QLineEdit" name="idLineEdit"/>
          </item>
         </layout>
        </item>
@@ -56,7 +62,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="insert_namelineEdit_"/>
+          <widget class="QLineEdit" name="nameLineEdit"/>
          </item>
         </layout>
        </item>
@@ -65,12 +71,12 @@
          <item>
           <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>登入密码</string>
+            <string>密码</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="insert_passwordlineEdit"/>
+          <widget class="QLineEdit" name="passwardLineEdit"/>
          </item>
         </layout>
        </item>
@@ -79,28 +85,28 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="insertloginButton">
+        <widget class="QPushButton" name="insertButton">
          <property name="text">
           <string>添加</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="login_deleteButton">
+        <widget class="QPushButton" name="deleteButton">
          <property name="text">
           <string>删除</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="login_updatepushButton">
+        <widget class="QPushButton" name="updateButton">
          <property name="text">
           <string>更新</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="user_back_Button">
+        <widget class="QPushButton" name="backButton">
          <property name="text">
           <string>返回</string>
          </property>

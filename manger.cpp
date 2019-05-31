@@ -6,7 +6,6 @@
 #include "stuinformanage.h"
 #include "scoremanage.h"
 #include "coursemanage.h"
-#include "classmanage.h"
 
 manger::manger(QWidget *parent) :
     QWidget(parent),
@@ -62,7 +61,7 @@ void manger::on_scoremanagepushButton_clicked()
 void manger::on_course_manageButton_clicked()
 {
     this->hide();
-  coursemanage *ew=new coursemanage;
-   ew->show();
+	coursemanage *ew=new coursemanage;
+	ew->show();
 }
 

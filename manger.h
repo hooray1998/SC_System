@@ -24,7 +24,8 @@ private slots:
 
     void on_scoremanagepushButton_clicked();
 
-    void on_class_managepushButton_clicked();
+    void on_course_manageButton_clicked();
+
 
 private:
     Ui::manger *ui;

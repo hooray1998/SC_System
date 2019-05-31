@@ -58,7 +58,7 @@ void stuinformanage::on_infor_querypushButton_clicked()
 
     if(query.next())
     {
-       qDebug()<<"第一条数据为"<<query.value(0).toString();
+        qDebug()<<"第一条数据为"<<query.value(0).toString();
         ui->infor_outputlineEdit->setText(query.value(0).toString());
         ui->infor_namelineEdit->setText(query.value(1).toString());
         ui->infor_sexlineEdit->setText(query.value(2).toString());
@@ -198,10 +198,7 @@ void stuinformanage::on_infor_deletepushButton_clicked()
                  }
     if(T2==true)
     {
-
        QMessageBox::information(this ,tr("提示") , tr("改编号不存在无法删除"));
-
-
     }
 }
 
@@ -322,6 +319,7 @@ void stuinformanage::on_infor_see_inforpushButton_clicked()
 
               }
 
+	//TODO: 显示所有的数据 , 使用tablewidget
 
       for(int i=0;i<list_all_student.size();i++){
           qDebug()<<list_all_student[i];

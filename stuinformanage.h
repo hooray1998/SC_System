@@ -1,8 +1,6 @@
 #ifndef STUINFORMANAGE_H
 #define STUINFORMANAGE_H
-
-#include <QWidget>
-
+#include <QWidget> 
 namespace Ui {
 class stuinformanage;
 }

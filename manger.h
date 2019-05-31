@@ -22,17 +22,9 @@ private slots:
 
     void on_stu_inform_guanlipushButton_clicked();
 
-    void on_dorm_guanliButton_clicked();
-
-    void on_award_managepushButton_clicked();
-
     void on_scoremanagepushButton_clicked();
 
-    void on_course_manageButton_clicked();
-
     void on_class_managepushButton_clicked();
-
-    void on_feemanagepushButton_clicked();
 
 private:
     Ui::manger *ui;

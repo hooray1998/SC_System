@@ -4,12 +4,10 @@
 #include"mainwindow.h"
 #include "userlogin.h"
 #include "stuinformanage.h"
-#include "dormmanage.h"
-#include "awardmanage.h"
 #include "scoremanage.h"
 #include "coursemanage.h"
 #include "classmanage.h"
-#include "feemanage.h"
+
 manger::manger(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::manger)
@@ -51,20 +49,7 @@ void manger::on_stu_inform_guanlipushButton_clicked()
     ij->show();
 }
 
-void manger::on_dorm_guanliButton_clicked()
-{
-    this->hide();
-    dormmanage *yf=new dormmanage;
-    yf->show();
-}
 
-void manger::on_award_managepushButton_clicked()
-{
-    this->hide();
-
-    awardmanage *nl=new awardmanage;
-    nl->show();
-}
 
 void manger::on_scoremanagepushButton_clicked()
 {
@@ -81,16 +66,3 @@ void manger::on_course_manageButton_clicked()
    ew->show();
 }
 
-void manger::on_class_managepushButton_clicked()
-{
-    this->hide();
-    classmanage *wq=new classmanage;
-    wq->show();
-}
-
-void manger::on_feemanagepushButton_clicked()
-{
-    this->hide();
-    feemanage *eg=new feemanage;
-    eg->show();
-}

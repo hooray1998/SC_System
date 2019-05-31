@@ -16,13 +16,11 @@ public:
     ~userlogin();
 
 private slots:
-    void on_insert_loginButton_clicked();
 
-    void on_user_login_back_clicked();
-
-    void on_delete_loginButton_clicked();
-
-    void on_update_userButton_clicked();
+    void on_insertloginButton_clicked();
+    void on_login_updatepushButton_clicked();
+    void on_login_deleteButton_clicked();
+    void on_insertloginqueryButton_clicked();
 
 private:
     Ui::userlogin *ui;

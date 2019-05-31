@@ -32,22 +32,16 @@ SOURCES += main.cpp\
     findscore.cpp \
     moneyfind.cpp \
     awardfind.cpp \
-    dormfind.cpp \
     findclass.cpp \
     coursefind.cpp \
     userlogin.cpp \
     deletelogin.cpp \
-    updatelogin.cpp \
-    insertlogin.cpp \
     stuinformanage.cpp \
     seeallstuinfor.cpp \
     dormmanage.cpp \
-    seedorminfor.cpp \
-    awardmanage.cpp \
     scoremanage.cpp \
     coursemanage.cpp \
     classmanage.cpp \
-    feemanage.cpp
 
 HEADERS  += mainwindow.h \
     student.h \
@@ -58,22 +52,16 @@ HEADERS  += mainwindow.h \
     findscore.h \
     moneyfind.h \
     awardfind.h \
-    dormfind.h \
     findclass.h \
     coursefind.h \
     userlogin.h \
     deletelogin.h \
-    updatelogin.h \
-    insertlogin.h \
     stuinformanage.h \
     seeallstuinfor.h \
     dormmanage.h \
-    seedorminfor.h \
-    awardmanage.h \
     scoremanage.h \
     coursemanage.h \
     classmanage.h \
-    feemanage.h
 
 FORMS    += mainwindow.ui \
     studentform.ui \
@@ -82,22 +70,15 @@ FORMS    += mainwindow.ui \
     findscore.ui \
     moneyfind.ui \
     awardfind.ui \
-    dormfind.ui \
     findclass.ui \
     coursefind.ui \
     userlogin.ui \
-    deletelogin.ui \
-    updatelogin.ui \
-    insertlogin.ui \
     stuinformanage.ui \
     seeallstuinfor.ui \
     dormmanage.ui \
-    seedorminfor.ui \
-    awardmanage.ui \
     scoremanage.ui \
     coursemanage.ui \
     classmanage.ui \
-    feemanage.ui
 
 QT       += sql
 

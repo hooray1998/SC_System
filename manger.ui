@@ -17,13 +17,6 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QLabel" name="label_useradmin">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QLabel" name="label">
        <property name="text">
         <string>管理员端</string>
@@ -46,7 +39,7 @@
        <item>
         <widget class="QPushButton" name="userloginButton">
          <property name="text">
-          <string>用户登录管理</string>
+          <string>管理员信息管理</string>
          </property>
         </widget>
        </item>
@@ -58,16 +51,16 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="scoremanagepushButton">
+        <widget class="QPushButton" name="course_manageButton">
          <property name="text">
-          <string>成绩信息管理</string>
+          <string>课程信息管理</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="course_manageButton">
+        <widget class="QPushButton" name="scoremanagepushButton">
          <property name="text">
-          <string>课程信息管理</string>
+          <string>成绩信息管理</string>
          </property>
         </widget>
        </item>
@@ -94,13 +87,6 @@
       <widget class="QPushButton" name="pushButton_9">
        <property name="text">
         <string>返回</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_10">
-       <property name="text">
-        <string>取消</string>
        </property>
       </widget>
      </item>

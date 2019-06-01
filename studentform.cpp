@@ -3,22 +3,12 @@
 #include "mainwindow.h"
 #include "globle.h"
 #include  <QtDebug>
-#include "allstuinform.h"
 studentForm::studentForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::studentForm)
 {
     ui->setupUi(this);
 
-  //  MainWindow *form=new MainWindow;
-   //
-  //  connect(form,SIGNAL(sendData(QString)),this,SLOT(receiveData(QString)));
-  //  form->show();
-
-  QLabel *lab= ui->label_user;
-  lab->setStyleSheet("color:#ff6600;");
-  lab->setText("欢迎"+username_qj);
-  setWindowTitle(QString("设计者8001716066，陈永喆"));
 
 }
 
@@ -28,13 +18,6 @@ studentForm::~studentForm()
 }
 
 
-/*void studentForm::receiveData(QString data)
-{
-
-   // qDebug()<<"值是:"<<data;
-   // ui->label_user->setText("122");
-}
-*/
 
 void studentForm::on_pushButton_clicked()
 {
@@ -93,11 +76,6 @@ void studentForm::on_pushButton_3_clicked()
           qDebug()<<list_all_student[i];
 
       }
-
-      this->hide();
-  AllstuInform  *as=new AllstuInform;
-
-       as->show();
 
 
 }

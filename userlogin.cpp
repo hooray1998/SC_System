@@ -1,11 +1,20 @@
 #include "userlogin.h"
 #include "ui_userlogin.h"
 #include "manger.h"
+#include "globle.h"
 userlogin::userlogin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::userlogin)
 {
     ui->setupUi(this);
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    headers<<"ID"<<"姓名"<<"密码";
+    ui->tableWidget->setHorizontalHeaderLabels(headers);
+    ui->tableWidget->setRowCount(100);
+    on_seeAllButton_clicked();
 }
 
 userlogin::~userlogin()
@@ -19,32 +28,15 @@ void userlogin::on_insertButton_clicked()
     QString username=ui->nameLineEdit->text();
     QString password=ui->passwardLineEdit->text();
 
-    QSqlDatabase db;
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("studentmanager");
-    db.setUserName(sqluser);
-    db.setPassword(sqlpass);
-    if (!db.open())
-        qDebug() << "Failed to connect to root mysql admin";
-    else qDebug() << "open";
-
-
-    QSqlQuery query(db);
-    db.exec("SET NAMES 'UTF8'");
-    query.exec("select id from admin");
+    QSqlQuery query;
+    query.exec("select id from Admin");
     bool T2=true;
     while(query.next())
     {
         QString id1= query.value(0).toString();
 
-
         if(id.compare(id1)==0)
         {
-
             QMessageBox::information(this ,tr("提示") , tr("该编号已存在不允许再次添加!"));
             T2=false;
         }
@@ -52,22 +44,19 @@ void userlogin::on_insertButton_clicked()
     if(T2==true)
     {
         QString sql;
-        sql = QString("insert into admin (id,username,password)"
+        sql = QString("insert into Admin (id,username,password)"
                       " VALUES ('%1', '%2' , '%3' )")
                 .arg(id).arg(username).arg(password);
 
 
         bool ok = query.exec(sql);
         if(ok)
-        {
-
             QMessageBox::information(this ,tr("提示") , tr("添加成功!"));
-        }
         else
-        {
             QMessageBox::information(this ,tr("提示") , tr("添加失败!"));
-        }
+
     }
+    on_seeAllButton_clicked();
 
 }
 
@@ -77,34 +66,16 @@ void userlogin::on_updateButton_clicked()
     QString username=ui->nameLineEdit->text();
     QString password=ui->passwardLineEdit->text();
 
-    QSqlDatabase db;
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("studentmanager");
-    db.setUserName(sqluser);
-    db.setPassword(sqlpass);
-    if (!db.open())
-        qDebug() << "Failed to connect to root mysql admin";
-    else qDebug() << "open";
-
-
-
-    QSqlQuery query(db);
-    db.exec("SET NAMES 'UTF8'");
-    query.exec("select id from admin");
+    QSqlQuery query;
+    query.exec("select id from Admin");
     bool T2=true;
     while(query.next())
     {
         QString id1= query.value(0).toString();
-
-
         if(id.compare(id1)==0)
         {
             QString sql;
-            sql = QString("UPDATE admin "
+            sql = QString("UPDATE Admin "
                           "set username = '%0',password = '%1'"
                           " where id = '%2' ")
                     .arg(username).arg(password).arg(id);
@@ -114,7 +85,6 @@ void userlogin::on_updateButton_clicked()
             bool ok = query.exec(sql);
             if(ok)
             {
-
                 QMessageBox::information(this ,tr("提示") , tr("更改成功!"));
                 T2=false;
             }
@@ -127,12 +97,9 @@ void userlogin::on_updateButton_clicked()
         }
     }
     if(T2==true)
-    {
-
         QMessageBox::information(this ,tr("提示") , tr("该编号不存在，无法更改"));
 
-
-    }
+    on_seeAllButton_clicked();
 }
 
 void userlogin::on_deleteButton_clicked()
@@ -141,35 +108,17 @@ void userlogin::on_deleteButton_clicked()
     QString username=ui->nameLineEdit->text();
     QString password=ui->passwardLineEdit->text();
 
-    QSqlDatabase db;
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("studentmanager");
-    db.setUserName(sqluser);
-    db.setPassword(sqlpass);
-
-    if (!db.open())
-        qDebug() << "Failed to connect to root mysql admin";
-    else qDebug() << "open";
-
-
-
-    QSqlQuery query(db);
-    db.exec("SET NAMES 'UTF8'");
-    query.exec("select id from admin");
+    QSqlQuery query;
+    query.exec("select id from Admin");
     bool T2=true;
     while(query.next())
     {
         QString id1= query.value(0).toString();
 
-
         if(id.compare(id1)==0)
         {
             QString sql;
-            sql = QString("DELETE FROM admin "
+            sql = QString("DELETE FROM Admin "
                           " where id = '%1' ").arg(id);
 
             QSqlQuery query;
@@ -189,62 +138,36 @@ void userlogin::on_deleteButton_clicked()
         }
     }
     if(T2==true)
-    {
-
         QMessageBox::information(this ,tr("提示") , tr("改编号不存在无法删除"));
 
-
-    }
+    on_seeAllButton_clicked();
 }
 
 void userlogin::on_seeAllButton_clicked()
 {
-    QString id=ui->idLineEdit->text();
 
+    QSqlQuery query;
 
-    if(id.compare("")==0)
-        QMessageBox::information(this, "警告", "请输入编号");
+    query.exec("select id,username,password from Admin");
+    ui->tableWidget->clear();
+    ui->tableWidget->setHorizontalHeaderLabels(headers);
 
-    QSqlDatabase db;
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QMYSQL");
-
-    db.setHostName("localhost");
-    db.setDatabaseName("studentmanager");
-    db.setUserName(sqluser);
-    db.setPassword(sqlpass);
-    if (!db.open())
-        qDebug() << "Failed to connect to root mysql admin";
-    else qDebug() << "open";
-
-
-    QSqlQuery query(db);
-    db.exec("SET NAMES 'UTF8'");
-
-
-    query.exec("select username,password from admin where id='"+id+"'");
-
-    if(query.next())
+    int row=0;
+    while(query.next())
     {
-        qDebug()<<"第一条数据为"<<query.value(0).toString();
-        ui->nameLineEdit->setText(query.value(0).toString());
-        ui->passwardLineEdit->setText(query.value(1).toString());
-
-
+        for(int i  = 0 ; i <3; i++)
+        {
+            QTableWidgetItem *item = new QTableWidgetItem;
+            item->setText(query.value(i).toString());
+            ui->tableWidget->setItem(row, i, item);
+        }
+        row++;
     }
-    else
-    {
-        if(id.compare("")==0)
-            return;
 
-        else  QMessageBox::information(this, "警告", "不存在你所要查找的编号");
-    }
 }
 
 void userlogin::on_backButton_clicked(){
-    MainWindow *dh;
+    manger *dh;
     this->hide();
     dh=new manger ;
     dh->show();

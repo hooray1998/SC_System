@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QtDebug>
-#include<globle.h>
+#include "globle.h"
 #include "manger.h"
+
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow)
@@ -10,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 	ui->Login_password->setEchoMode(QLineEdit::Password);
 
-	ui->Login_username->setText("xh");
-	ui->Login_password->setText("1234567");
+	ui->Login_username->setText("tc0001");
+	ui->Login_password->setText("pw0001");
 	ui->radioButton_2->setChecked(true);
 }
 
@@ -19,41 +20,28 @@ MainWindow::~MainWindow()
 {
 	delete ui;
 }
+
+
 void MainWindow::on_LoginButton_clicked()
 {
 	QString username = ui->Login_username->text();
 	QString password = ui->Login_password->text();
 	qDebug()<<"用户名:"<<username<<"密码:"<<password;
 
-    //if (!ConnectDatabase::openDatabase())
-    //{
-     //   QMessageBox::warning(this, tr("错误"), tr("打开数据库失败!"));
-      //  return ;
-    //}
-
-	QSqlDatabase db;
-	if(QSqlDatabase::contains("qt_sql_default_connection"))
-		db = QSqlDatabase::database("qt_sql_default_connection");
-	else
-		db = QSqlDatabase::addDatabase("QMYSQL");
-
-	db.setHostName("localhost");
-	db.setDatabaseName("studentmanager");
-	db.setUserName(sqluser);
-	db.setPassword(sqlpass);
-	if (!db.open())
-		qDebug() << "Failed to connect to root mysql admin";
-	else
-		qDebug() << "open";
+    if (!openDatabase())
+    {
+        QMessageBox::warning(this, tr("错误"), tr("打开数据库失败!"));
+        return ;
+    }
 
 	if( ui->radioButton->isChecked()){
-		QSqlQuery query(db);
-		query.exec("select id,username,password from admin");
+        QSqlQuery query;
+		query.exec("select id,password from Admin");
 		bool T1=false;
 		while(query.next())
 		{
-			QString user = query.value(1).toString();
-			QString pass = query.value(2).toString();
+			QString user = query.value(0).toString();
+			QString pass = query.value(1).toString();
 			qDebug() << user << pass ;
 			if(username.compare(user)==0&&password.compare(pass)==0){
 				password_qj=password;
@@ -69,22 +57,18 @@ void MainWindow::on_LoginButton_clicked()
 		if(T1==false)
 			QMessageBox::information(this, "警告", "用户名或密码错误");
 
-
 	}
 
 	if( ui->radioButton_2->isChecked()){
 
 
-		QSqlQuery query(db);
-		db.exec("SET NAMES 'UTF8'");
-		//db.exec("SET NAMES 'UTF8'");
-		query.exec("select id,name,password from student");
+        QSqlQuery query;
+		query.exec("select Sno,password from S");
 		bool T=false;
 		while(query.next())
 		{
-			//QString user = QString::fromUtf8(query.value(1).toByteArray());
-			QString user = query.value(1).toString();
-			QString pass = query.value(2).toString();
+			QString user = query.value(0).toString();
+			QString pass = query.value(1).toString();
 			qDebug() << user << pass ;
 			if(username.compare(user)==0&&password.compare(pass)==0){
 				password_qj=password;

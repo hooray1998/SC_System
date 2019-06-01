@@ -24,36 +24,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    student.cpp \
     studentform.cpp \
     manger.cpp \
     globle.cpp \
-    allstuinform.cpp \
     userlogin.cpp \
     stuinformanage.cpp \
-    seeallstuinfor.cpp \
     scoremanage.cpp \
     coursemanage.cpp \
 
 HEADERS  += mainwindow.h \
-    student.h \
     studentform.h \
     manger.h \
     globle.h \
-    allstuinform.h \
     userlogin.h \
     stuinformanage.h \
-    seeallstuinfor.h \
     scoremanage.h \
     coursemanage.h \
 
 FORMS    += mainwindow.ui \
     studentform.ui \
     manger.ui \
-    allstuinform.ui \
     userlogin.ui \
     stuinformanage.ui \
-    seeallstuinfor.ui \
     scoremanage.ui \
     coursemanage.ui \
 

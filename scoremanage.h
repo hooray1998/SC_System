@@ -16,18 +16,15 @@ public:
     ~scoremanage();
 
 private slots:
-    void on_score_querypushButton_clicked();
-
-    void on_score_addpushButton_clicked();
-
-    void on_score_deletepushButton_clicked();
-
-    void on_score_upadtepushButton_clicked();
-
-    void on_score_backpushButton_clicked();
+    void on_insertButton_clicked();
+    void on_deleteButton_clicked();
+    void on_updateButton_clicked();
+    void on_seeAllButton_clicked();
+    void on_backButton_clicked();
 
 private:
     Ui::scoremanage *ui;
+    QStringList headers;
 };
 
 #endif // SCOREMANAGE_H

@@ -16,18 +16,15 @@ public:
     ~coursemanage();
 
 private slots:
-    void on_course_querypushButton_clicked();
-
-    void on_course_addpushButton_clicked();
-
-    void on_course_deletepushButton_clicked();
-
-    void on_course_updatepushButton_clicked();
-
-    void on_course_backpushButton_clicked();
+    void on_insertButton_clicked();
+    void on_deleteButton_clicked();
+    void on_updateButton_clicked();
+    void on_seeAllButton_clicked();
+    void on_backButton_clicked();
 
 private:
     Ui::coursemanage *ui;
+    QStringList headers;
 };
 
 #endif // COURSEMANAGE_H

@@ -30,6 +30,7 @@ private slots:
 
 private:
     Ui::userlogin *ui;
+    QStringList headers;
 };
 
 #endif // USERLOGIN_H

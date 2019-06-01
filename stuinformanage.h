@@ -14,20 +14,14 @@ public:
     ~stuinformanage();
 
 private slots:
-    void on_infor_querypushButton_clicked();
-
-    void on_infor_addButton_clicked();
-
-    void on_infor_deletepushButton_clicked();
-
-    void on_infor_updatepushButton_clicked();
-
-    void on_infor_backpushButton_clicked();
-
-    void on_infor_see_inforpushButton_clicked();
-
+    void on_insertButton_clicked();
+    void on_deleteButton_clicked();
+    void on_updateButton_clicked();
+    void on_seeAllButton_clicked();
+    void on_backButton_clicked();
 private:
     Ui::stuinformanage *ui;
+    QStringList headers;
 };
 
 #endif // STUINFORMANAGE_H

@@ -12,9 +12,6 @@ manger::manger(QWidget *parent) :
     ui(new Ui::manger)
 {
     ui->setupUi(this);
-    QLabel *lab= ui->label_useradmin;
-    lab->setStyleSheet("color:#ff6600;");
-    lab->setText("欢迎"+username_qj);
 
 
 

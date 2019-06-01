@@ -7,6 +7,7 @@ manage_course::manage_course(QWidget *parent) :
     ui(new Ui::manage_course)
 {
     ui->setupUi(this);
+    ui->seeAllButton->hide();
     ui->tableWidget->setColumnCount(4);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);

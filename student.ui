@@ -15,9 +15,17 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QTableWidget" name="tableWidget"/>
+   </item>
+   <item>
     <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>学生端</string>
+      <string>学生客户端</string>
      </property>
     </widget>
    </item>

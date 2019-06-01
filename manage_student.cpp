@@ -9,6 +9,7 @@ manage_student::manage_student(QWidget *parent) :
     ui(new Ui::manage_student)
 {
     ui->setupUi(this);
+    ui->seeAllButton->hide();
     ui->tableWidget->setColumnCount(6);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);

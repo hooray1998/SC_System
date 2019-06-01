@@ -9,10 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
+    setWindowTitle("学生选课系统");
 	ui->Login_password->setEchoMode(QLineEdit::Password);
+    connect(ui->Login_password,&QLineEdit::returnPressed,this,&MainWindow::on_LoginButton_clicked);
 
-	ui->Login_username->setText("tc0001");
-	ui->Login_password->setText("pw0001");
+    this->move(700,400);
 	ui->radioButton_2->setChecked(true);
 }
 
@@ -76,6 +77,7 @@ void MainWindow::on_LoginButton_clicked()
 				T=true;
 				this->hide();
                 f=new student;
+                f->setID(user);
 				f->show();
 
 			}

@@ -1,10 +1,10 @@
-#include "userlogin.h"
-#include "ui_userlogin.h"
-#include "manger.h"
+#include "manage_admin.h"
+#include "ui_manage_admin.h"
+#include "manage.h"
 #include "globle.h"
-userlogin::userlogin(QWidget *parent) :
+manage_admin::manage_admin(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::userlogin)
+    ui(new Ui::manage_admin)
 {
     ui->setupUi(this);
     ui->tableWidget->setColumnCount(3);
@@ -17,12 +17,12 @@ userlogin::userlogin(QWidget *parent) :
     on_seeAllButton_clicked();
 }
 
-userlogin::~userlogin()
+manage_admin::~manage_admin()
 {
     delete ui;
 }
 
-void userlogin::on_insertButton_clicked()
+void manage_admin::on_insertButton_clicked()
 {
     QString id=ui->idLineEdit->text();
     QString username=ui->nameLineEdit->text();
@@ -60,7 +60,7 @@ void userlogin::on_insertButton_clicked()
 
 }
 
-void userlogin::on_updateButton_clicked()
+void manage_admin::on_updateButton_clicked()
 {
     QString id=ui->idLineEdit->text();
     QString username=ui->nameLineEdit->text();
@@ -102,7 +102,7 @@ void userlogin::on_updateButton_clicked()
     on_seeAllButton_clicked();
 }
 
-void userlogin::on_deleteButton_clicked()
+void manage_admin::on_deleteButton_clicked()
 {
     QString id=ui->idLineEdit->text();
     QString username=ui->nameLineEdit->text();
@@ -143,7 +143,7 @@ void userlogin::on_deleteButton_clicked()
     on_seeAllButton_clicked();
 }
 
-void userlogin::on_seeAllButton_clicked()
+void manage_admin::on_seeAllButton_clicked()
 {
 
     QSqlQuery query;
@@ -166,9 +166,9 @@ void userlogin::on_seeAllButton_clicked()
 
 }
 
-void userlogin::on_backButton_clicked(){
-    manger *dh;
+void manage_admin::on_backButton_clicked(){
+    manage *dh;
     this->hide();
-    dh=new manger ;
+    dh=new manage ;
     dh->show();
 }

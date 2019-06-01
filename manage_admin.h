@@ -9,16 +9,16 @@
 #include <QtDebug>
 
 namespace Ui {
-class userlogin;
+class manage_admin;
 }
 
-class userlogin : public QWidget
+class manage_admin : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit userlogin(QWidget *parent = 0);
-    ~userlogin();
+    explicit manage_admin(QWidget *parent = 0);
+    ~manage_admin();
 
 private slots:
 
@@ -29,7 +29,7 @@ private slots:
     void on_backButton_clicked();
 
 private:
-    Ui::userlogin *ui;
+    Ui::manage_admin *ui;
     QStringList headers;
 };
 

@@ -1,19 +1,19 @@
-#ifndef COURSEMANAGE_H
-#define COURSEMANAGE_H
+#ifndef SCOREMANAGE_H
+#define SCOREMANAGE_H
 
 #include <QWidget>
 
 namespace Ui {
-class coursemanage;
+class manage_grade;
 }
 
-class coursemanage : public QWidget
+class manage_grade : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit coursemanage(QWidget *parent = 0);
-    ~coursemanage();
+    explicit manage_grade(QWidget *parent = 0);
+    ~manage_grade();
 
 private slots:
     void on_insertButton_clicked();
@@ -23,8 +23,8 @@ private slots:
     void on_backButton_clicked();
 
 private:
-    Ui::coursemanage *ui;
+    Ui::manage_grade *ui;
     QStringList headers;
 };
 
-#endif // COURSEMANAGE_H
+#endif // SCOREMANAGE_H

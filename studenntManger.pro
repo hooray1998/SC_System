@@ -24,30 +24,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    studentform.cpp \
-    manger.cpp \
+    student.cpp \
+    manage.cpp \
     globle.cpp \
-    userlogin.cpp \
-    stuinformanage.cpp \
-    scoremanage.cpp \
-    coursemanage.cpp \
+    manage_admin.cpp \
+    manage_student.cpp \
+    manage_grade.cpp \
+    manage_course.cpp \
 
 HEADERS  += mainwindow.h \
-    studentform.h \
-    manger.h \
+    student.h \
+    manage.h \
     globle.h \
-    userlogin.h \
-    stuinformanage.h \
-    scoremanage.h \
-    coursemanage.h \
+    manage_admin.h \
+    manage_student.h \
+    manage_grade.h \
+    manage_course.h \
 
 FORMS    += mainwindow.ui \
-    studentform.ui \
-    manger.ui \
-    userlogin.ui \
-    stuinformanage.ui \
-    scoremanage.ui \
-    coursemanage.ui \
+    student.ui \
+    manage.ui \
+    manage_admin.ui \
+    manage_student.ui \
+    manage_grade.ui \
+    manage_course.ui \
 
 QT       += sql
 

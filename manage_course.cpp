@@ -1,40 +1,36 @@
-#include "stuinformanage.h"
-#include "ui_stuinformanage.h"
-#include "mainwindow.h"
+#include "manage_course.h"
+#include "ui_manage_course.h"
+#include "manage.h"
 #include "globle.h"
-#include "manger.h"
-
-stuinformanage::stuinformanage(QWidget *parent) :
+manage_course::manage_course(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::stuinformanage)
+    ui(new Ui::manage_course)
 {
     ui->setupUi(this);
-    ui->tableWidget->setColumnCount(6);
+    ui->tableWidget->setColumnCount(4);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    headers<<"ID"<<"姓名"<<"性别"<<"年龄"<<"专业"<<"密码";
+    headers<<"课程号"<<"课程名"<<"教师"<<"学分";
     ui->tableWidget->setHorizontalHeaderLabels(headers);
     ui->tableWidget->setRowCount(100);
     on_seeAllButton_clicked();
 }
 
-stuinformanage::~stuinformanage()
+manage_course::~manage_course()
 {
     delete ui;
 }
 
-void stuinformanage::on_insertButton_clicked()
+void manage_course::on_insertButton_clicked()
 {
     QString id=ui->idLineEdit->text();
-    QString username=ui->nameLineEdit->text();
-    QString sex=ui->sexLineEdit->text();
-    QString age=ui->ageLineEdit->text();
-    QString zhuanye=ui->majorLineEdit->text();
-    QString password=ui->passwardLineEdit->text();
+    QString cname=ui->nameLineEdit->text();
+    QString teacher=ui->teacherLineEdit->text();
+    QString credit=ui->creditLineEdit->text();
 
     QSqlQuery query;
-    query.exec("select Sno from S");
+    query.exec("select Cno from C");
     bool T2=true;
     while(query.next())
     {
@@ -49,8 +45,8 @@ void stuinformanage::on_insertButton_clicked()
     if(T2==true)
     {
         QString sql;
-        sql = QString("insert into S  VALUES ('%1', '%2', '%3','%4','%5','%6' )")
-                .arg(id).arg(username).arg(sex).arg(age).arg(zhuanye).arg(password);
+        sql = QString("insert into C  VALUES ('%1', '%2' , '%3', %4 )")
+                .arg(id).arg(cname).arg(teacher).arg(credit);
 
 
         bool ok = query.exec(sql);
@@ -64,17 +60,15 @@ void stuinformanage::on_insertButton_clicked()
 
 }
 
-void stuinformanage::on_updateButton_clicked()
+void manage_course::on_updateButton_clicked()
 {
     QString id=ui->idLineEdit->text();
-    QString username=ui->nameLineEdit->text();
-    QString sex=ui->sexLineEdit->text();
-    QString age=ui->ageLineEdit->text();
-    QString zhuanye=ui->majorLineEdit->text();
-    QString password=ui->passwardLineEdit->text();
+    QString cname=ui->nameLineEdit->text();
+    QString teacher=ui->teacherLineEdit->text();
+    QString credit=ui->creditLineEdit->text();
 
     QSqlQuery query;
-    query.exec("select Sno from S");
+    query.exec("select Cno from C");
     bool T2=true;
     while(query.next())
     {
@@ -82,9 +76,11 @@ void stuinformanage::on_updateButton_clicked()
         if(id.compare(id1)==0)
         {
             QString sql;
-            sql = QString("UPDATE  S  set name= '%2', sex='%3', age='%4', major='%5', password='%6'\
-                           where Sno='%1'")
-                           .arg(id).arg(username).arg(sex).arg(age).arg(zhuanye).arg(password);
+            sql = QString("UPDATE C "
+                          "set name= '%2',teacher = '%3',credit=%4"
+                          " where Cno = '%1' ")
+                    .arg(id).arg(cname).arg(teacher).arg(credit);
+
 
             QSqlQuery query;
             bool ok = query.exec(sql);
@@ -107,12 +103,12 @@ void stuinformanage::on_updateButton_clicked()
     on_seeAllButton_clicked();
 }
 
-void stuinformanage::on_deleteButton_clicked()
+void manage_course::on_deleteButton_clicked()
 {
     QString id=ui->idLineEdit->text();
 
     QSqlQuery query;
-    query.exec("select Sno from S");
+    query.exec("select Cno from C");
     bool T2=true;
     while(query.next())
     {
@@ -121,8 +117,7 @@ void stuinformanage::on_deleteButton_clicked()
         if(id.compare(id1)==0)
         {
             QString sql;
-            sql = QString("DELETE FROM S "
-                          " where Sno = '%1' ").arg(id);
+            sql = QString("DELETE FROM C  where Cno = '%1' ").arg(id);
 
             QSqlQuery query;
             bool ok = query.exec(sql);
@@ -146,19 +141,18 @@ void stuinformanage::on_deleteButton_clicked()
     on_seeAllButton_clicked();
 }
 
-void stuinformanage::on_seeAllButton_clicked()
+void manage_course::on_seeAllButton_clicked()
 {
 
     QSqlQuery query;
-
-    query.exec("select * from S");
+    query.exec("select * from C");
     ui->tableWidget->clear();
     ui->tableWidget->setHorizontalHeaderLabels(headers);
 
     int row=0;
     while(query.next())
     {
-        for(int i  = 0 ; i <6; i++)
+        for(int i  = 0 ; i <4; i++)
         {
             QTableWidgetItem *item = new QTableWidgetItem;
             item->setText(query.value(i).toString());
@@ -169,9 +163,9 @@ void stuinformanage::on_seeAllButton_clicked()
 
 }
 
-void stuinformanage::on_backButton_clicked(){
-    manger *dh;
+void manage_course::on_backButton_clicked(){
+    manage *dh;
     this->hide();
-    dh=new manger ;
+    dh=new manage ;
     dh->show();
 }

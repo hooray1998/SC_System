@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>manger</class>
- <widget class="QWidget" name="manger">
+ <class>manage</class>
+ <widget class="QWidget" name="manage">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -37,7 +37,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="userloginButton">
+        <widget class="QPushButton" name="manage_adminButton">
          <property name="text">
           <string>管理员信息管理</string>
          </property>
@@ -58,7 +58,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="scoremanagepushButton">
+        <widget class="QPushButton" name="manage_gradepushButton">
          <property name="text">
           <string>成绩信息管理</string>
          </property>

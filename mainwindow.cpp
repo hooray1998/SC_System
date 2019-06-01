@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QtDebug>
 #include "globle.h"
-#include "manger.h"
+#include "manage.h"
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -48,7 +48,7 @@ void MainWindow::on_LoginButton_clicked()
 				username_qj=username;
 				T1=true;
 				this->hide();
-				m=new manger;
+				m=new manage;
 				m->show();
 			}
 		}
@@ -75,7 +75,7 @@ void MainWindow::on_LoginButton_clicked()
 				username_qj=username;
 				T=true;
 				this->hide();
-				f=new studentForm;
+                f=new student;
 				f->show();
 
 			}

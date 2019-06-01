@@ -1,44 +1,46 @@
-#include "scoremanage.h"
-#include "ui_scoremanage.h"
-#include <QMessageBox>
+#include "manage_student.h"
+#include "ui_manage_student.h"
 #include "mainwindow.h"
 #include "globle.h"
-#include <QtDebug>
-#include "manger.h"
-scoremanage::scoremanage(QWidget *parent) :
+#include "manage.h"
+
+manage_student::manage_student(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::scoremanage)
+    ui(new Ui::manage_student)
 {
     ui->setupUi(this);
-    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setColumnCount(6);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    headers<<"学号"<<"课程号"<<"成绩";
+    headers<<"ID"<<"姓名"<<"性别"<<"年龄"<<"专业"<<"密码";
     ui->tableWidget->setHorizontalHeaderLabels(headers);
     ui->tableWidget->setRowCount(100);
     on_seeAllButton_clicked();
 }
 
-scoremanage::~scoremanage()
+manage_student::~manage_student()
 {
     delete ui;
 }
 
-void scoremanage::on_insertButton_clicked()
+void manage_student::on_insertButton_clicked()
 {
-    QString sno=ui->snoLineEdit->text();
-    QString cno=ui->cnoLineEdit->text();
-    QString grade=ui->gradeLineEdit->text();
+    QString id=ui->idLineEdit->text();
+    QString username=ui->nameLineEdit->text();
+    QString sex=ui->sexLineEdit->text();
+    QString age=ui->ageLineEdit->text();
+    QString zhuanye=ui->majorLineEdit->text();
+    QString password=ui->passwardLineEdit->text();
 
     QSqlQuery query;
-    query.exec("select Sno,Cno from SC");
+    query.exec("select Sno from S");
     bool T2=true;
     while(query.next())
     {
-        QString s= query.value(0).toString();
-        QString c= query.value(1).toString();
-        if(s==sno&&c==cno)
+        QString id1= query.value(0).toString();
+
+        if(id.compare(id1)==0)
         {
             QMessageBox::information(this ,tr("提示") , tr("该编号已存在不允许再次添加!"));
             T2=false;
@@ -47,8 +49,8 @@ void scoremanage::on_insertButton_clicked()
     if(T2==true)
     {
         QString sql;
-        sql = QString("insert into SC VALUES ('%1', '%2' , %3 )")
-                .arg(sno).arg(cno).arg(grade);
+        sql = QString("insert into S  VALUES ('%1', '%2', '%3','%4','%5','%6' )")
+                .arg(id).arg(username).arg(sex).arg(age).arg(zhuanye).arg(password);
 
 
         bool ok = query.exec(sql);
@@ -62,26 +64,27 @@ void scoremanage::on_insertButton_clicked()
 
 }
 
-void scoremanage::on_updateButton_clicked()
+void manage_student::on_updateButton_clicked()
 {
-    QString sno=ui->snoLineEdit->text();
-    QString cno=ui->cnoLineEdit->text();
-    QString grade=ui->gradeLineEdit->text();
+    QString id=ui->idLineEdit->text();
+    QString username=ui->nameLineEdit->text();
+    QString sex=ui->sexLineEdit->text();
+    QString age=ui->ageLineEdit->text();
+    QString zhuanye=ui->majorLineEdit->text();
+    QString password=ui->passwardLineEdit->text();
 
     QSqlQuery query;
-    query.exec("select Sno,Cno from SC");
+    query.exec("select Sno from S");
     bool T2=true;
     while(query.next())
     {
-        QString s= query.value(0).toString();
-        QString c= query.value(1).toString();
-        if(s==sno&&c==cno)
+        QString id1= query.value(0).toString();
+        if(id.compare(id1)==0)
         {
             QString sql;
-            sql = QString("UPDATE SC set grade = %3 \
-                           where Sno = '%1' and Cno='%2' ")
-                    .arg(sno).arg(cno).arg(grade);
-
+            sql = QString("UPDATE  S  set name= '%2', sex='%3', age='%4', major='%5', password='%6'\
+                           where Sno='%1'")
+                           .arg(id).arg(username).arg(sex).arg(age).arg(zhuanye).arg(password);
 
             QSqlQuery query;
             bool ok = query.exec(sql);
@@ -104,28 +107,28 @@ void scoremanage::on_updateButton_clicked()
     on_seeAllButton_clicked();
 }
 
-void scoremanage::on_deleteButton_clicked()
+void manage_student::on_deleteButton_clicked()
 {
-    QString sno=ui->snoLineEdit->text();
-    QString cno=ui->cnoLineEdit->text();
+    QString id=ui->idLineEdit->text();
 
     QSqlQuery query;
-    query.exec("select Sno,Cno from SC");
+    query.exec("select Sno from S");
     bool T2=true;
     while(query.next())
     {
-        QString s= query.value(0).toString();
-        QString c= query.value(1).toString();
-        if(s==sno&&c==cno)
+        QString id1= query.value(0).toString();
+
+        if(id.compare(id1)==0)
         {
             QString sql;
-            sql = QString("DELETE FROM SC \
-                           where Sno = '%1' and Cno='%2' ").arg(sno).arg(cno);
+            sql = QString("DELETE FROM S "
+                          " where Sno = '%1' ").arg(id);
 
             QSqlQuery query;
             bool ok = query.exec(sql);
             if(ok)
             {
+
                 QMessageBox::information(this ,tr("提示") , tr("删除成功!"));
                 T2=false;
             }
@@ -143,42 +146,32 @@ void scoremanage::on_deleteButton_clicked()
     on_seeAllButton_clicked();
 }
 
-void scoremanage::on_seeAllButton_clicked()
+void manage_student::on_seeAllButton_clicked()
 {
 
     QSqlQuery query;
 
-    query.exec("select * from SC");
+    query.exec("select * from S");
     ui->tableWidget->clear();
     ui->tableWidget->setHorizontalHeaderLabels(headers);
 
     int row=0;
-    QStringList rowdata;
     while(query.next())
     {
-        rowdata.clear();
-        QString id = query.value(0).toString();
-        QString user = query.value(1).toString();
-        QString pass = query.value(2).toString();
-        rowdata<<id<<user<<pass;
-        list_all_student.append(rowdata);
-
-        for(int i  = 0 ; i <rowdata .size() ; i++)
+        for(int i  = 0 ; i <6; i++)
         {
             QTableWidgetItem *item = new QTableWidgetItem;
-            item->setText(rowdata.at(i));
-            ui->tableWidget->setItem(row , i , item);
+            item->setText(query.value(i).toString());
+            ui->tableWidget->setItem(row, i, item);
         }
-
         row++;
-
     }
 
 }
 
-void scoremanage::on_backButton_clicked(){
-    manger *dh;
+void manage_student::on_backButton_clicked(){
+    manage *dh;
     this->hide();
-    dh=new manger ;
+    dh=new manage ;
     dh->show();
 }

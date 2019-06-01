@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>coursemanage</class>
- <widget class="QWidget" name="coursemanage">
+ <class>manage_grade</class>
+ <widget class="QWidget" name="manage_grade">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -35,7 +35,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -43,12 +43,12 @@
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>课程号</string>
+            <string>学号</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="idLineEdit"/>
+          <widget class="QLineEdit" name="snoLineEdit"/>
          </item>
         </layout>
        </item>
@@ -57,26 +57,12 @@
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>课程名</string>
+            <string>课程号</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="nameLineEdit"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>教师</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="teacherLineEdit"/>
+          <widget class="QLineEdit" name="cnoLineEdit"/>
          </item>
         </layout>
        </item>
@@ -85,12 +71,12 @@
          <item>
           <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>学分</string>
+            <string>成绩</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="creditLineEdit"/>
+          <widget class="QLineEdit" name="gradeLineEdit"/>
          </item>
         </layout>
        </item>

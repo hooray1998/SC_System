@@ -2,16 +2,16 @@
 #define STUINFORMANAGE_H
 #include <QWidget> 
 namespace Ui {
-class stuinformanage;
+class manage_student;
 }
 
-class stuinformanage : public QWidget
+class manage_student : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit stuinformanage(QWidget *parent = 0);
-    ~stuinformanage();
+    explicit manage_student(QWidget *parent = 0);
+    ~manage_student();
 
 private slots:
     void on_insertButton_clicked();
@@ -20,7 +20,7 @@ private slots:
     void on_seeAllButton_clicked();
     void on_backButton_clicked();
 private:
-    Ui::stuinformanage *ui;
+    Ui::manage_student *ui;
     QStringList headers;
 };
 

@@ -4,11 +4,11 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QRadioButton>
-#include "studentform.h"
+#include "student.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
-#include<manger.h>
+#include<manage.h>
 namespace Ui {
 class MainWindow;
 }
@@ -29,8 +29,8 @@ signals:
     void sendData(QString);
 private:
     Ui::MainWindow *ui;
-    studentForm *f;
-    manger *m;
+    student *f;
+    manage *m;
 };
 
 #endif // MAINWINDOW_H
